@@ -21,6 +21,7 @@ import {
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import axios from "axios";
 
 // Example data for pie chart (replace with your real data)
 const categoryExpenses = [
@@ -269,7 +270,7 @@ const transactions = [
 ];
 
 export default function DashboardPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -411,8 +412,8 @@ export default function DashboardPage() {
               <div
                 className="bg-white rounded-none shadow-xl p-6 flex flex-col"
                 style={{
-                  maxHeight: "616px", // Reduced height (adjust as needed)
-                  height: "616px",    // Fixed height for the section
+                  maxHeight: "616px", 
+                  height: "616px",    
                 }}
               >
                 <div className="text-md font-semibold text-[#6c7a93] mb-2 flex items-center justify-between">
@@ -422,7 +423,6 @@ export default function DashboardPage() {
                       const dates = transactions
                         .slice(2)
                         .map((t) => t.dateLabel)
-                        .reverse();
                       return dates.length
                         ? `${dates[dates.length - 1]} - ${dates[0]}`
                         : "";
